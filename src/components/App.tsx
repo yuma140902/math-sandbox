@@ -1,4 +1,4 @@
-import { Button, Card, Col, Input, Row, Select, Typography } from 'antd';
+import { Button, Card, Col, Input, Row, Typography } from 'antd';
 import { AppLayout } from './util/AppLayout';
 import { useState } from 'react';
 import { BlockMath } from 'react-katex';
@@ -6,11 +6,12 @@ import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import { ConversionOutput } from './ConversionOutput';
 import { RichSelector } from './util/RichSelector';
+import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
+import { InputTypeSelector } from './InputTypeSelector';
 
 const HEADER_HEIGHT = 64;
 
 type InputType = 'latex';
-type OutputType = 'html';
 
 function App() {
   const [latexExpr, setLatexExpr] = useState<string>('\\int_0^\\infty x^2 dx');
@@ -39,26 +40,9 @@ function App() {
         <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
           <Card title="入力" bordered={false}>
             <Typography.Paragraph>
-              <RichSelector
-                title="入力タイプ"
+              <InputTypeSelector
                 defaultValue={inputType}
                 handleChange={setInputType}
-                options={[
-                  {
-                    value: 'latex',
-                    title: 'LaTeX',
-                    label: (
-                      <Typography.Paragraph>
-                        LaTeX
-                        <br />
-                        例:{' '}
-                        <Typography.Text code>
-                          {'\\int_0^\\infty x^2 dx'}
-                        </Typography.Text>
-                      </Typography.Paragraph>
-                    ),
-                  },
-                ]}
               />
             </Typography.Paragraph>
             {/* TODO: Monaco Editor */}
@@ -84,30 +68,9 @@ function App() {
 
           <Card title="出力" bordered={false}>
             <Typography.Paragraph>
-              <RichSelector
-                title="出力タイプ"
+              <OutputTypeSelector
                 defaultValue={outputType}
                 handleChange={setOutputType}
-                options={[
-                  {
-                    value: 'html',
-                    title: 'HTML',
-                    label: (
-                      <Typography.Paragraph>
-                        HTML
-                        <br />
-                        <Typography.Text type="secondary">
-                          HTML形式
-                        </Typography.Text>
-                        <br />
-                        例:{' '}
-                        <Typography.Text code>
-                          {'\\int_0^\\infty x^2 dx'}
-                        </Typography.Text>
-                      </Typography.Paragraph>
-                    ),
-                  },
-                ]}
               />
               &nbsp;
               <Button type="primary" onClick={handleConvert}>
