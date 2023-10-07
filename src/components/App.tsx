@@ -5,12 +5,11 @@ import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
-import { InputTypeSelector } from './InputTypeSelector';
+import { InputType, InputTypeSelector } from './InputTypeSelector';
 import { OutputView } from './OutputView';
+import { InputEditor } from './InputEditor';
 
 const HEADER_HEIGHT = 64;
-
-type InputType = 'latex';
 
 function App() {
   const [latexExpr, setLatexExpr] = useState<string>('\\int_0^\\infty x^2 dx');
@@ -44,12 +43,12 @@ function App() {
                 handleChange={setInputType}
               />
             </Typography.Paragraph>
-            {/* TODO: Monaco Editor */}
-            <Input.TextArea
-              placeholder="LaTeXの数式を入力"
-              autoSize={{ minRows: 2 }}
-              defaultValue={latexExpr}
-              onChange={(e) => setLatexExpr(e.target.value)}
+            <InputEditor
+              input={{
+                type: inputType,
+                text: latexExpr,
+                setText: setLatexExpr,
+              }}
             />
           </Card>
         </Col>
