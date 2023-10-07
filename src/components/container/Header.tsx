@@ -1,6 +1,6 @@
 import { Layout, Space, Switch, Tooltip, theme } from 'antd';
-import AppTitle from './AppTitle';
-import GitHubLink from './GitHubLink';
+import AppTitle from '../presenter/AppTitle';
+import GitHubLink from '../presenter/GitHubLink';
 
 type Props = {
   height: number;
