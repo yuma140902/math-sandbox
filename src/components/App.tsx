@@ -37,6 +37,7 @@ function App() {
           appName="Math Sandbox"
           handleOpenAboutDialog={handleOpenAboutDialog}
           githubUrl="https://github.com/yuma140902/math-sandbox"
+          menubar={undefined}
         />
       </Layout>
       <Modal

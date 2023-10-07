@@ -1,6 +1,7 @@
-import { Layout, Space, Switch, Tooltip, theme } from 'antd';
+import { Layout, Menu, Space, Switch, Tooltip, theme } from 'antd';
 import AppTitle from './AppTitle';
 import GitHubLink from './GitHubLink';
+import React from 'react';
 
 type Props = {
   height: number;
@@ -10,8 +11,12 @@ type Props = {
   appName: string;
   handleOpenAboutDialog: () => void;
   githubUrl?: string;
+  menubar?: React.ReactElement<typeof Menu>;
 };
 
+/**
+ * アプリケーションのヘッダー
+ */
 export default function Header({
   height,
   isDarkMode,
@@ -20,6 +25,7 @@ export default function Header({
   appName,
   handleOpenAboutDialog,
   githubUrl,
+  menubar,
 }: Props) {
   const {
     token: { colorBgContainer },
@@ -43,6 +49,7 @@ export default function Header({
         appIcon={appIcon}
         appName={appName}
       />
+      {menubar}
       <Space style={{ float: 'right', marginLeft: 'auto' }}>
         <Tooltip title="テーマ" placement="bottom">
           <Switch
