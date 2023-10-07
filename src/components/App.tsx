@@ -7,22 +7,26 @@ import katex from 'katex';
 import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
 import { InputType, InputTypeSelector } from './InputTypeSelector';
 import { OutputView } from './OutputView';
-import { InputEditor } from './InputEditor';
+import { InputEditor, InputState } from './InputEditor';
 
 const HEADER_HEIGHT = 64;
 
 function App() {
-  const [latexExpr, setLatexExpr] = useState<string>('\\int_0^\\infty x^2 dx');
-  const [inputType, setInputType] = useState<InputType>('latex');
+  const [input, setInput] = useState<InputState>({
+    type: 'latex',
+    text: '\\int_0^\\infty x^2 dx',
+  });
   const [outputType, setOutputType] = useState<OutputType>('html');
   const [outputText, setOutputText] = useState<string | undefined>(undefined);
 
   const handleConvert = () => {
-    const output = katex.renderToString(latexExpr, {
-      displayMode: true,
-      output: 'html',
-    });
-    setOutputText(output);
+    if (input.type === 'latex' && input.text) {
+      const output = katex.renderToString(input.text, {
+        displayMode: true,
+        output: 'html',
+      });
+      setOutputText(output);
+    }
   };
 
   return (
@@ -39,17 +43,11 @@ function App() {
           <Card title="入力" bordered={false}>
             <Typography.Paragraph>
               <InputTypeSelector
-                defaultValue={inputType}
-                handleChange={setInputType}
+                defaultValue={input.type}
+                handleChange={(v) => setInput({ type: v, text: undefined })}
               />
             </Typography.Paragraph>
-            <InputEditor
-              input={{
-                type: inputType,
-                text: latexExpr,
-                setText: setLatexExpr,
-              }}
-            />
+            <InputEditor input={input} setInput={setInput} />
           </Card>
         </Col>
 
@@ -60,7 +58,7 @@ function App() {
             style={{ marginBottom: 20 }}
           >
             <Typography.Text>
-              <BlockMath math={latexExpr} />
+              <BlockMath math={input.text ?? ''} />
             </Typography.Text>
           </Card>
 

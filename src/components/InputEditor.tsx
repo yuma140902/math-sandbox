@@ -1,14 +1,17 @@
 import { Input } from 'antd';
+import { InputType } from 'zlib';
 
-type Props = {
-  input: {
-    type: 'latex';
-    text: string;
-    setText: (t: string) => void;
-  };
+export type InputState = {
+  type: 'latex';
+  text?: string;
 };
 
-export function InputEditor({ input }: Props) {
+type Props = {
+  input: InputState;
+  setInput: (_: InputState) => void;
+};
+
+export function InputEditor({ input, setInput }: Props) {
   if (input.type === 'latex') {
     // TODO: Monaco Editor
     return (
@@ -16,7 +19,7 @@ export function InputEditor({ input }: Props) {
         placeholder="LaTeXの数式を入力"
         autoSize={{ minRows: 2 }}
         defaultValue={input.text}
-        onChange={(e) => input.setText(e.target.value)}
+        onChange={(e) => setInput({ ...input, text: e.target.value })}
       />
     );
   }
