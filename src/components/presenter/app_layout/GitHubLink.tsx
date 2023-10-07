@@ -10,7 +10,7 @@ type Props = {
 /**
  * アイコンで表現されたGitHubへのリンク
  */
-export default function GitHubLink({ githubUrl, isDarkMode }: Props) {
+export function GitHubLink({ githubUrl, isDarkMode }: Props) {
   return (
     <Tooltip title="View on GitHub" placement="bottom">
       <a href={githubUrl} target="_blank">

@@ -1,4 +1,4 @@
-import AppLayout from './presenter/AppLayout';
+import { AppLayout } from './presenter/AppLayout';
 
 const HEADER_HEIGHT = 64;
 

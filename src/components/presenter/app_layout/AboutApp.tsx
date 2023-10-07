@@ -12,7 +12,7 @@ type Props = {
 /**
  * アプリケーションの情報を表示する
  */
-export default function AboutApp({
+export function AboutApp({
   appIcon,
   appName,
   githubRepo,

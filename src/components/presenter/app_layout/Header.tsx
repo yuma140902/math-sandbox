@@ -1,7 +1,7 @@
 import { Layout, Menu, Space, Switch, Tooltip, theme } from 'antd';
-import AppTitle from './AppTitle';
-import GitHubLink from './GitHubLink';
 import { ReactElement } from 'react';
+import { AppTitle } from './AppTitle';
+import { GitHubLink } from './GitHubLink';
 
 type Props = {
   height: number;
@@ -17,7 +17,7 @@ type Props = {
 /**
  * アプリケーションのヘッダー
  */
-export default function Header({
+export function Header({
   height,
   isDarkMode,
   setIsDarkMode,

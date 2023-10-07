@@ -1,8 +1,8 @@
 import { Button, ConfigProvider, Layout, Modal, theme } from 'antd';
 import { ReactNode, useState } from 'react';
-import AboutApp from './app_layout/AboutApp';
-import Header from './app_layout/Header';
 import './AppLayout.css';
+import { Header } from './app_layout/Header';
+import { AboutApp } from './app_layout/AboutApp';
 
 type Props = {
   appName: string;
@@ -17,7 +17,7 @@ type Props = {
 /**
  * アプリケーションの外枠となるもの
  */
-export default function AppLayout({
+export function AppLayout({
   appName,
   appIcon,
   appVersion,

@@ -11,12 +11,7 @@ type Props = {
 /**
  * アプリケーションのアイコンと名前を表示する
  */
-export default function AppTitle({
-  handleClick,
-  appIcon,
-  appName,
-  height,
-}: Props) {
+export function AppTitle({ handleClick, appIcon, appName, height }: Props) {
   const windowWidth = useWindowWidth();
 
   return (
