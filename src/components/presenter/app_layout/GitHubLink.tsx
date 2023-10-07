@@ -1,6 +1,6 @@
 import { Tooltip } from 'antd';
-import githubDarkIcon from '../../../assets/github-mark-white.svg';
-import githubLightIcon from '../../../assets/github-mark.svg';
+import githubDarkIcon from '@/assets/github-mark-white.svg';
+import githubLightIcon from '@/assets/github-mark.svg';
 
 type Props = {
   isDarkMode: boolean;
