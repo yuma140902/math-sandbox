@@ -20,6 +20,9 @@ dependencies:
   katex:
     specifier: ^0.16.9
     version: 0.16.9
+  monaco-editor:
+    specifier: ^0.44.0
+    version: 0.44.0
   react:
     specifier: ^18.2.0
     version: 18.2.0

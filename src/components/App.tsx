@@ -16,7 +16,7 @@ const HEADER_HEIGHT = 64;
 function App() {
   const [input, setInput] = useState<InputState>({
     type: 'latex',
-    text: '\\int_0^\\infty x^2 dx',
+    text: '\\int_0^\\infty x^2 dx\n',
   });
   const [output, setOutput] = useState<OutputState>({
     type: 'html',
