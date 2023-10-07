@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
+import { ConversionOutput } from './ConversionOutput';
 
 const HEADER_HEIGHT = 64;
 
@@ -14,7 +15,7 @@ function App() {
   const [latexExpr, setLatexExpr] = useState<string>('\\int_0^\\infty x^2 dx');
   const [inputType, setInputType] = useState<InputType>('latex');
   const [outputType, setOutputType] = useState<OutputType>('html');
-  const [outputText, setOutputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string | undefined>(undefined);
 
   const handleConvert = () => {
     const output = katex.renderToString(latexExpr, {
@@ -82,7 +83,6 @@ function App() {
             </Typography.Text>
           </Card>
 
-          {/* TODO: シンタックスハイライト*/}
           <Card title="出力" bordered={false}>
             <Typography.Paragraph>
               <Typography.Text>出力タイプ: </Typography.Text>
@@ -117,9 +117,12 @@ function App() {
                 変換
               </Button>
             </Typography.Paragraph>
-            <Typography.Paragraph>
-              <pre>{outputText}</pre>
-            </Typography.Paragraph>
+            <ConversionOutput
+              output={{
+                type: outputType,
+                text: outputText,
+              }}
+            />
           </Card>
         </Col>
       </Row>
