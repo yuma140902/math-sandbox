@@ -6,7 +6,7 @@ import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
 import { InputType, InputTypeSelector } from './InputTypeSelector';
-import { OutputView } from './OutputView';
+import { OutputState, OutputView } from './OutputView';
 import { InputEditor, InputState } from './InputEditor';
 
 const HEADER_HEIGHT = 64;
@@ -16,8 +16,10 @@ function App() {
     type: 'latex',
     text: '\\int_0^\\infty x^2 dx',
   });
-  const [outputType, setOutputType] = useState<OutputType>('html');
-  const [outputText, setOutputText] = useState<string | undefined>(undefined);
+  const [output, setOutput] = useState<OutputState>({
+    type: 'html',
+    text: undefined,
+  });
 
   const handleConvert = () => {
     if (input.type === 'latex' && input.text) {
@@ -25,7 +27,7 @@ function App() {
         displayMode: true,
         output: 'html',
       });
-      setOutputText(output);
+      setOutput({ type: 'html', text: output });
     }
   };
 
@@ -44,7 +46,7 @@ function App() {
             <Typography.Paragraph>
               <InputTypeSelector
                 defaultValue={input.type}
-                handleChange={(v) => setInput({ type: v, text: undefined })}
+                handleChange={(v) => setInput({ type: v })}
               />
             </Typography.Paragraph>
             <InputEditor input={input} setInput={setInput} />
@@ -65,20 +67,15 @@ function App() {
           <Card title="出力" bordered={false}>
             <Typography.Paragraph>
               <OutputTypeSelector
-                defaultValue={outputType}
-                handleChange={setOutputType}
+                defaultValue={output.type}
+                handleChange={(v) => setOutput({ type: v })}
               />
               &nbsp;
               <Button type="primary" onClick={handleConvert}>
                 変換
               </Button>
             </Typography.Paragraph>
-            <OutputView
-              output={{
-                type: outputType,
-                text: outputText,
-              }}
-            />
+            <OutputView output={output} />
           </Card>
         </Col>
       </Row>

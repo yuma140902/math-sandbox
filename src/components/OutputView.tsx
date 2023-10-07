@@ -1,10 +1,12 @@
 import { Typography } from 'antd';
 
+export type OutputState = {
+  type: 'html';
+  text?: string;
+};
+
 type Props = {
-  output: {
-    type: 'html';
-    text?: string;
-  };
+  output: OutputState;
 };
 
 export function OutputView({ output }: Props) {
