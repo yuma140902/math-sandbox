@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
-import { ConversionOutput } from './ConversionOutput';
-import { RichSelector } from './util/RichSelector';
 import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
 import { InputTypeSelector } from './InputTypeSelector';
+import { OutputView } from './OutputView';
 
 const HEADER_HEIGHT = 64;
 
@@ -77,7 +76,7 @@ function App() {
                 変換
               </Button>
             </Typography.Paragraph>
-            <ConversionOutput
+            <OutputView
               output={{
                 type: outputType,
                 text: outputText,

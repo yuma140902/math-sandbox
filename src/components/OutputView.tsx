@@ -7,7 +7,7 @@ type Props = {
   };
 };
 
-export function ConversionOutput({ output }: Props) {
+export function OutputView({ output }: Props) {
   if (output.type === 'html' && output.text) {
     // TODO: シンタックスハイライト
     return (
