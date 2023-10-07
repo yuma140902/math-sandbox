@@ -7,7 +7,7 @@ export function MonacoEditor(props: {
   text?: string;
   isDarkMode: boolean;
   language?: string;
-  onChange: (s?: string) => void;
+  onChange?: (s?: string) => void;
   options?: Omit<
     editor.IStandaloneEditorConstructionOptions,
     /* updateHeightの挙動がおかしくなるため、scrollBeyondLastLineはfalseに設定する必要がある。そのため、上書きさせない*/

@@ -90,7 +90,7 @@ function App() {
                 変換
               </Button>
             </Typography.Paragraph>
-            <OutputView output={output} />
+            <OutputView output={output} isDarkMode={isDarkMode} />
           </Card>
         </Col>
       </Row>

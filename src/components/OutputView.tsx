@@ -1,16 +1,23 @@
 import { OutputState } from '@/output';
 import { Typography } from 'antd';
+import { MonacoEditor } from './util/MonacoEditor';
 
 type Props = {
   output: OutputState;
+  isDarkMode: boolean;
 };
 
-export function OutputView({ output }: Props) {
+export function OutputView({ output, isDarkMode }: Props) {
   if (output.type === 'html' && output.text) {
     // TODO: シンタックスハイライト
     return (
       <Typography.Paragraph>
-        <pre>{output.text}</pre>
+        <MonacoEditor
+          isDarkMode={false}
+          options={{ readOnly: true }}
+          text={output.text}
+          language="html"
+        />
         注意: 以下のスタイルシートを読み込む必要があります。
         <br />
         <pre>
@@ -23,7 +30,12 @@ export function OutputView({ output }: Props) {
   } else if (output.type === 'mathml' && output.text) {
     return (
       <Typography.Paragraph>
-        <pre>{output.text}</pre>
+        <MonacoEditor
+          isDarkMode={false}
+          options={{ readOnly: true }}
+          text={output.text}
+          language="xml"
+        />
       </Typography.Paragraph>
     );
   }
