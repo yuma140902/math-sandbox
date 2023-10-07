@@ -8,6 +8,9 @@ type Props = {
   height: number;
 };
 
+/**
+ * アプリケーションのアイコンと名前を表示する
+ */
 export default function AppTitle({
   handleClick,
   appIcon,

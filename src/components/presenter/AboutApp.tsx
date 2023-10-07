@@ -9,6 +9,9 @@ type Props = {
   description: string;
 };
 
+/**
+ * アプリケーションの情報を表示する
+ */
 export default function AboutApp({
   appIcon,
   appName,

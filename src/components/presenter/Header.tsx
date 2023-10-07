@@ -1,7 +1,7 @@
 import { Layout, Menu, Space, Switch, Tooltip, theme } from 'antd';
 import AppTitle from './AppTitle';
 import GitHubLink from './GitHubLink';
-import React from 'react';
+import { ReactElement } from 'react';
 
 type Props = {
   height: number;
@@ -11,7 +11,7 @@ type Props = {
   appName: string;
   handleOpenAboutDialog: () => void;
   githubUrl?: string;
-  menubar?: React.ReactElement<typeof Menu>;
+  menubar?: ReactElement<typeof Menu>;
 };
 
 /**
