@@ -1,12 +1,21 @@
-import { ConfigProvider, Layout, theme } from 'antd';
+import { Button, ConfigProvider, Layout, Modal, theme } from 'antd';
 import './App.css';
 import { useState } from 'react';
 import Header from './container/Header';
+import AboutApp from './presenter/AboutApp';
 
 const HEADER_HEIGHT = 64;
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isAboutDialogOpen, setIsAboutDialogOpen] = useState(false);
+
+  const handleOpenAboutDialog = () => {
+    setIsAboutDialogOpen(true);
+  };
+  const handleCloseAboutDialog = () => {
+    setIsAboutDialogOpen(false);
+  };
 
   return (
     <ConfigProvider
@@ -26,10 +35,29 @@ function App() {
           setIsDarkMode={setIsDarkMode}
           appIcon=""
           appName="Math Sandbox"
-          handleOpenAboutDialog={() => {}}
+          handleOpenAboutDialog={handleOpenAboutDialog}
           githubUrl="https://github.com/yuma140902/math-sandbox"
         />
       </Layout>
+      <Modal
+        open={isAboutDialogOpen}
+        closable={false}
+        onCancel={handleCloseAboutDialog}
+        onOk={handleCloseAboutDialog}
+        footer={
+          <Button type="default" onClick={handleCloseAboutDialog}>
+            閉じる
+          </Button>
+        }
+      >
+        <AboutApp
+          appIcon=""
+          appName="Math Sandbox"
+          githubRepo="yuma140902/math-sandbox"
+          version={`${__COMMIT_ID__} (${__GIT_BRANCH__} ブランチ)`}
+          description="数式の変換・レンダリング"
+        />
+      </Modal>
     </ConfigProvider>
   );
 }
