@@ -5,6 +5,7 @@ import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import { ConversionOutput } from './ConversionOutput';
+import { RichSelector } from './util/RichSelector';
 
 const HEADER_HEIGHT = 64;
 
@@ -38,12 +39,10 @@ function App() {
         <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
           <Card title="入力" bordered={false}>
             <Typography.Paragraph>
-              <Typography.Text>入力タイプ: </Typography.Text>
-              <Select
-                style={{ minWidth: 300 }}
+              <RichSelector
+                title="入力タイプ"
                 defaultValue={inputType}
-                onChange={(value) => setInputType(value)}
-                optionLabelProp="title"
+                handleChange={setInputType}
                 options={[
                   {
                     value: 'latex',
@@ -85,12 +84,10 @@ function App() {
 
           <Card title="出力" bordered={false}>
             <Typography.Paragraph>
-              <Typography.Text>出力タイプ: </Typography.Text>
-              <Select
-                style={{ minWidth: 300 }}
+              <RichSelector
+                title="出力タイプ"
                 defaultValue={outputType}
-                onChange={(value) => setOutputType(value)}
-                optionLabelProp="title"
+                handleChange={setOutputType}
                 options={[
                   {
                     value: 'html',
