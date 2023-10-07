@@ -34,6 +34,10 @@ export function InputEditor({ input, setInput, isDarkMode }: Props) {
           loading={<Spin />}
           options={{
             scrollBeyondLastLine: false,
+            minimap: {
+              enabled: false,
+            },
+            wordWrap: 'on',
           }}
           onChange={(s) => {
             setInput({ ...input, text: s });
