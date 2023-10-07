@@ -30,7 +30,7 @@ export function InputEditor({ input, setInput, isDarkMode }: Props) {
       <>
         <MonacoEditor
           language="latex"
-          text="input.text"
+          text={input.text}
           isDarkMode={isDarkMode}
           onChange={(s) => {
             setInput({ ...input, text: s });
