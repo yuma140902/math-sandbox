@@ -36,6 +36,31 @@ function App() {
       <Row>
         <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
           <Card title="入力" bordered={false}>
+            <Typography.Paragraph>
+              <Typography.Text>入力タイプ: </Typography.Text>
+              <Select
+                style={{ minWidth: 300 }}
+                defaultValue={inputType}
+                onChange={(value) => setInputType(value)}
+                optionLabelProp="title"
+                options={[
+                  {
+                    value: 'latex',
+                    title: 'LaTeX',
+                    label: (
+                      <Typography.Paragraph>
+                        LaTeX
+                        <br />
+                        例:{' '}
+                        <Typography.Text code>
+                          {'\\int_0^\\infty x^2 dx'}
+                        </Typography.Text>
+                      </Typography.Paragraph>
+                    ),
+                  },
+                ]}
+              />
+            </Typography.Paragraph>
             {/* TODO: Monaco Editor */}
             <Input.TextArea
               placeholder="LaTeXの数式を入力"
@@ -47,76 +72,51 @@ function App() {
         </Col>
 
         <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
-          <Card title="プレビュー" bordered={false}>
+          <Card
+            title="プレビュー"
+            bordered={false}
+            style={{ marginBottom: 20 }}
+          >
             <Typography.Text>
               <BlockMath math={latexExpr} />
             </Typography.Text>
           </Card>
-        </Col>
 
-        <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
-          <Card title="変換の設定" bordered={false}>
-            <Typography.Text>入力タイプ: </Typography.Text>
-            <Select
-              style={{ minWidth: 300 }}
-              defaultValue={inputType}
-              onChange={(value) => setInputType(value)}
-              optionLabelProp="title"
-              options={[
-                {
-                  value: 'latex',
-                  title: 'LaTeX',
-                  label: (
-                    <Typography.Paragraph>
-                      LaTeX
-                      <br />
-                      例:{' '}
-                      <Typography.Text code>
-                        {'\\int_0^\\infty x^2 dx'}
-                      </Typography.Text>
-                    </Typography.Paragraph>
-                  ),
-                },
-              ]}
-            />
-            <br />
-            <Typography.Text>出力タイプ: </Typography.Text>
-            <Select
-              style={{ minWidth: 300 }}
-              defaultValue={outputType}
-              onChange={(value) => setOutputType(value)}
-              optionLabelProp="title"
-              options={[
-                {
-                  value: 'html',
-                  title: 'HTML',
-                  label: (
-                    <Typography.Paragraph>
-                      HTML
-                      <br />
-                      <Typography.Text type="secondary">
-                        HTML形式
-                      </Typography.Text>
-                      <br />
-                      例:{' '}
-                      <Typography.Text code>
-                        {'\\int_0^\\infty x^2 dx'}
-                      </Typography.Text>
-                    </Typography.Paragraph>
-                  ),
-                },
-              ]}
-            />
-            <br />
-            <Button type="primary" onClick={handleConvert}>
-              変換
-            </Button>
-          </Card>
-        </Col>
-
-        <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
           {/* TODO: シンタックスハイライト*/}
           <Card title="出力" bordered={false}>
+            <Typography.Paragraph>
+              <Typography.Text>出力タイプ: </Typography.Text>
+              <Select
+                style={{ minWidth: 300 }}
+                defaultValue={outputType}
+                onChange={(value) => setOutputType(value)}
+                optionLabelProp="title"
+                options={[
+                  {
+                    value: 'html',
+                    title: 'HTML',
+                    label: (
+                      <Typography.Paragraph>
+                        HTML
+                        <br />
+                        <Typography.Text type="secondary">
+                          HTML形式
+                        </Typography.Text>
+                        <br />
+                        例:{' '}
+                        <Typography.Text code>
+                          {'\\int_0^\\infty x^2 dx'}
+                        </Typography.Text>
+                      </Typography.Paragraph>
+                    ),
+                  },
+                ]}
+              />
+              &nbsp;
+              <Button type="primary" onClick={handleConvert}>
+                変換
+              </Button>
+            </Typography.Paragraph>
             <Typography.Paragraph>
               <pre>{outputText}</pre>
             </Typography.Paragraph>
