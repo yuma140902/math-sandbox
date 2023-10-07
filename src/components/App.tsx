@@ -24,12 +24,24 @@ function App() {
   });
 
   const handleConvert = () => {
-    if (input.type === 'latex' && input.text) {
+    if (input.type === 'latex' && input.text && output.type === 'html') {
       const output = katex.renderToString(input.text, {
         displayMode: true,
         output: 'html',
+        throwOnError: true, //TODO:
       });
       setOutput({ type: 'html', text: output });
+    } else if (
+      input.type === 'latex' &&
+      input.text &&
+      output.type === 'mathml'
+    ) {
+      const output = katex.renderToString(input.text, {
+        displayMode: true,
+        output: 'mathml',
+        throwOnError: true, //TODO:
+      });
+      setOutput({ type: 'mathml', text: output });
     }
   };
 

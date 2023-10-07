@@ -21,7 +21,10 @@ export function SelectorLabel({
       ) : undefined}
       {example ? (
         <>
-          例: <Typography.Text code>{example}</Typography.Text>
+          例:{' '}
+          <Typography.Paragraph code ellipsis>
+            {example}
+          </Typography.Paragraph>
         </>
       ) : undefined}
     </Typography.Paragraph>

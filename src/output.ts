@@ -1,6 +1,6 @@
-export type OutputType = 'html';
+export type OutputType = 'html' | 'mathml';
 
 export type OutputState = {
-  type: 'html';
+  type: 'html' | 'mathml';
   text?: string;
 };

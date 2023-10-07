@@ -33,7 +33,13 @@ export function OutputTypeSelector({ defaultValue, handleChange }: Props) {
           'html',
           'HTML',
           'HTML形式',
-          '<span class="katex-display">...',
+          '<span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;">...',
+        ),
+        getOption(
+          'mathml',
+          'MathML',
+          'Mathematical Markup Language',
+          '<mrow><msubsup><mo>∫</mo><mn>0</mn>...',
         ),
       ]}
     />
