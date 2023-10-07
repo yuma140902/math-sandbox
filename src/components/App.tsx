@@ -5,9 +5,11 @@ import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import { OutputTypeSelector } from './OutputTypeSelector';
 import { InputTypeSelector } from './InputTypeSelector';
-import { OutputState, OutputView } from './OutputView';
-import { InputEditor, InputState } from './InputEditor';
+import { OutputView } from './OutputView';
+import { InputEditor } from './InputEditor';
 import { Preview } from './Preview';
+import { InputState } from '@/input';
+import { OutputState } from '@/output';
 
 const HEADER_HEIGHT = 64;
 

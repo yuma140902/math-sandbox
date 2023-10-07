@@ -1,7 +1,6 @@
+import { OutputType } from '@/output';
 import { SelectorLabel } from './SelectorLabel';
 import { RichSelector, RichSelectorOption } from './util/RichSelector';
-
-export type OutputType = 'html';
 
 function getOption(
   value: OutputType,

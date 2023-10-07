@@ -1,9 +1,5 @@
+import { OutputState } from '@/output';
 import { Typography } from 'antd';
-
-export type OutputState = {
-  type: 'html';
-  text?: string;
-};
 
 type Props = {
   output: OutputState;

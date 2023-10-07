@@ -1,7 +1,6 @@
 import { RichSelector, RichSelectorOption } from './util/RichSelector';
 import { SelectorLabel } from './SelectorLabel';
-
-export type InputType = 'latex';
+import { InputType } from '@/input';
 
 function getOption(
   value: InputType,

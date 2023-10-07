@@ -1,9 +1,5 @@
+import { InputState } from '@/input';
 import { Input } from 'antd';
-
-export type InputState = {
-  type: 'latex';
-  text?: string;
-};
 
 type Props = {
   input: InputState;
