@@ -41,8 +41,8 @@ function App() {
       headerHeight={HEADER_HEIGHT}
     >
       <Row>
-        <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
-          <Card title="入力" bordered={false}>
+        <Col xs={24} sm={24} md={12}>
+          <Card title="入力" bordered={false} style={{ margin: 10 }}>
             <Typography.Paragraph>
               <InputTypeSelector
                 defaultValue={input.type}
@@ -53,16 +53,12 @@ function App() {
           </Card>
         </Col>
 
-        <Col xs={24} sm={24} md={12} style={{ padding: 10 }}>
-          <Card
-            title="プレビュー"
-            bordered={false}
-            style={{ marginBottom: 20 }}
-          >
+        <Col xs={24} sm={24} md={12}>
+          <Card title="プレビュー" bordered={false} style={{ margin: 10 }}>
             <Preview input={input} />
           </Card>
 
-          <Card title="出力" bordered={false}>
+          <Card title="出力" bordered={false} style={{ margin: 10 }}>
             <Typography.Paragraph>
               <OutputTypeSelector
                 defaultValue={output.type}
