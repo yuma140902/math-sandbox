@@ -1,5 +1,4 @@
 import { Input } from 'antd';
-import { InputType } from 'zlib';
 
 export type InputState = {
   type: 'latex';

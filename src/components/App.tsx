@@ -1,13 +1,13 @@
-import { Button, Card, Col, Input, Row, Typography } from 'antd';
+import { Button, Card, Col, Row, Typography } from 'antd';
 import { AppLayout } from './util/AppLayout';
 import { useState } from 'react';
-import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
-import { OutputType, OutputTypeSelector } from './OutputTypeSelector';
-import { InputType, InputTypeSelector } from './InputTypeSelector';
+import { OutputTypeSelector } from './OutputTypeSelector';
+import { InputTypeSelector } from './InputTypeSelector';
 import { OutputState, OutputView } from './OutputView';
 import { InputEditor, InputState } from './InputEditor';
+import { Preview } from './Preview';
 
 const HEADER_HEIGHT = 64;
 
@@ -59,9 +59,7 @@ function App() {
             bordered={false}
             style={{ marginBottom: 20 }}
           >
-            <Typography.Text>
-              <BlockMath math={input.text ?? ''} />
-            </Typography.Text>
+            <Preview input={input} />
           </Card>
 
           <Card title="出力" bordered={false}>
