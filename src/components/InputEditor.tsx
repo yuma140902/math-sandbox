@@ -3,6 +3,7 @@ import { Editor } from '@monaco-editor/react';
 import { Spin, Typography } from 'antd';
 import { editor } from 'monaco-editor';
 import { useRef, useState } from 'react';
+import { MonacoEditor } from './util/MonacoEditor';
 
 type Props = {
   input: InputState;
@@ -27,26 +28,12 @@ export function InputEditor({ input, setInput, isDarkMode }: Props) {
     // [4 Steps to Add Custom Language Support to Monaco Editor | by ohdarling | Medium](https://ohdarling88.medium.com/4-steps-to-add-custom-language-support-to-monaco-editor-5075eafa156d)
     return (
       <>
-        <Editor
-          height={editorHeight}
-          defaultLanguage="latex"
-          defaultValue={input.text}
-          loading={<Spin />}
-          options={{
-            scrollBeyondLastLine: false,
-            minimap: {
-              enabled: false,
-            },
-            wordWrap: 'on',
-          }}
+        <MonacoEditor
+          language="latex"
+          text="input.text"
+          isDarkMode={isDarkMode}
           onChange={(s) => {
             setInput({ ...input, text: s });
-          }}
-          theme={isDarkMode ? 'vs-dark' : 'light'}
-          onMount={(editor, _monaco) => {
-            editor.onDidContentSizeChange(() => {
-              updateHeight(editor);
-            });
           }}
         />
         <Typography.Title level={5} type="secondary">
