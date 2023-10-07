@@ -12,6 +12,8 @@ type Props = {
   appDescription: string;
   headerHeight: number;
   children?: ReactNode;
+  defaultIsDarkMode?: boolean;
+  onChangeTheme?: (isDarkMode: boolean) => void;
 };
 
 /**
@@ -25,8 +27,10 @@ export function AppLayout({
   appDescription,
   headerHeight,
   children,
+  defaultIsDarkMode,
+  onChangeTheme,
 }: Props) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(defaultIsDarkMode ?? false);
   const [isAboutDialogOpen, setIsAboutDialogOpen] = useState(false);
 
   const handleOpenAboutDialog = () => {
@@ -57,6 +61,7 @@ export function AppLayout({
           handleOpenAboutDialog={handleOpenAboutDialog}
           githubUrl={`https://github.com/${appGithubRepo}`}
           menubar={undefined}
+          onChangeTheme={onChangeTheme}
         />
         <Layout.Content>{children}</Layout.Content>
       </Layout>

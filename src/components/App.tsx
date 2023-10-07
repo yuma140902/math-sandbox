@@ -22,6 +22,7 @@ function App() {
     type: 'html',
     text: undefined,
   });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleConvert = () => {
     if (input.type === 'latex' && input.text && output.type === 'html') {
@@ -53,6 +54,8 @@ function App() {
       appGithubRepo="yuma140902/math-sandbox"
       appDescription="数式の変換・レンダリング"
       headerHeight={HEADER_HEIGHT}
+      defaultIsDarkMode={isDarkMode}
+      onChangeTheme={setIsDarkMode}
     >
       <Row>
         <Col xs={24} sm={24} md={12}>
@@ -63,7 +66,11 @@ function App() {
                 handleChange={(v) => setInput({ type: v })}
               />
             </Typography.Paragraph>
-            <InputEditor input={input} setInput={setInput} />
+            <InputEditor
+              input={input}
+              setInput={setInput}
+              isDarkMode={isDarkMode}
+            />
           </Card>
         </Col>
 

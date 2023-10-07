@@ -12,6 +12,7 @@ type Props = {
   handleOpenAboutDialog: () => void;
   githubUrl?: string;
   menubar?: ReactElement<typeof Menu>;
+  onChangeTheme?: (isDarkMode: boolean) => void;
 };
 
 /**
@@ -26,6 +27,7 @@ export function Header({
   handleOpenAboutDialog,
   githubUrl,
   menubar,
+  onChangeTheme,
 }: Props) {
   const {
     token: { colorBgContainer },
@@ -56,7 +58,10 @@ export function Header({
             checkedChildren="Dark"
             unCheckedChildren="Light"
             checked={isDarkMode}
-            onChange={(checked) => setIsDarkMode(checked)}
+            onChange={(checked) => {
+              setIsDarkMode(checked);
+              if (onChangeTheme) onChangeTheme(checked);
+            }}
           />
         </Tooltip>
       </Space>
