@@ -1,7 +1,7 @@
 import { Button, ConfigProvider, Layout, Modal, theme } from 'antd';
 import { ReactNode, useState } from 'react';
-import AboutApp from './AboutApp';
-import Header from './Header';
+import AboutApp from './app_layout/AboutApp';
+import Header from './app_layout/Header';
 import './AppLayout.css';
 
 type Props = {
